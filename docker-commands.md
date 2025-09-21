@@ -7,7 +7,7 @@ docker pull <img-name>:<version>
 docker pull nginx:1.23
 ```
 
-downloads the perticular image from docker registery (Docker HUB)
+to download the perticular image from docker registery (Docker HUB)
 
 ```
 docker images
@@ -69,12 +69,30 @@ docker exec -it d59cc16889a4 sh
 to start the container with the interactive shell inside
 
 ```
+docker rename <old-name> <new-name>
+```
+```
+docker rename happy-fruite nginx-server
+```
+
+to rename the container name
+
+```
 docker rm <container-id>
 ```
 ```
 docker rm d59cc16889a4
 ```
 to remove the stopped container
+
+```
+docker rmi <image-id>
+```
+```
+docker rmi 2b33f83g2
+```
+
+to remove the downloaded image
 
 ### Important Flags
 
@@ -107,9 +125,11 @@ to remove the stopped container
 ```
 FROM <image-name>:<version>
 
-COPY * /app/
+COPY . /app/
 
 WORKDIR /app
+
+RUN <command> <argument>
 
 CMD [<command>, arguments]
 ```
@@ -117,9 +137,11 @@ CMD [<command>, arguments]
 ```
 FROM node
 
-COPY * /app/
+COPY . /app/
 
 WORKDIR /app
+
+RUN npm install
 
 CMD ["node", "server.js"]
 ```
